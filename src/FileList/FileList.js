@@ -4,7 +4,7 @@ import FileItem from './../FileItem/FileItem'
 
 const FileList = ({ files, removeFile }) => {
     const deleteFileHandler = (_name) => {
-        axios.delete(`https://auth-delta-murex.vercel.app/upload?name=${_name}`)
+        axios.delete(`https://auth-ahqg.vercel.app/upload?name=${_name}`)
             .then((res) => removeFile(_name))
             .catch((err) => console.error(err));
     }

@@ -17,7 +17,7 @@ const SignupPage = () => {
             password
         }
 
-        const response = await fetch(`https://auth-delta-murex.vercel.app/users/signup`, {
+        const response = await fetch(`https://auth-ahqg.vercel.app/users/signup`, {
             method: "POST",
             body: JSON.stringify(userDetails),
             headers: {

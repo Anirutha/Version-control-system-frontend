@@ -18,7 +18,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
             file,
             file.name
         )
-        axios.post('https://auth-delta-murex.vercel.app/upload', formData)
+        axios.post('https://auth-ahqg.vercel.app/upload', formData)
             .then((res) => {
                 file.isUploading = false;
                 setFiles([...files, file])

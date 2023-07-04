@@ -13,7 +13,7 @@ const LoginPage = () => {
             email,
             password
         }
-        const response = await fetch(`https://auth-ahqg.vercel.app/users/login`, {
+        const response = await fetch(`https://auth-delta-murex.vercel.app/users/login`, {
             method: "POST",
             body: JSON.stringify(userDetails),
             headers: {

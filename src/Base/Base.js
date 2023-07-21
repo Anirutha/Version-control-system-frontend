@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Base({ title, description, children }) {
   const navigate = useNavigate()
-  function handleLogut() {
+  function handleLogout(){
     localStorage.removeItem("token")
     navigate("/login")
   }
@@ -47,7 +47,7 @@ function Base({ title, description, children }) {
                 edge="end"
                 color="inherit"
                 aria-label="add students"
-                onClick={handleLogut}
+                onClick={handleLogout}
                 sx={{ mr: 2 }}>
                 logout
               </IconButton>

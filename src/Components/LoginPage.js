@@ -1,63 +1,56 @@
-import React, { useState } from "react"
-import Base from "../Base/Base"
-import { Button, TextField, Typography } from "@mui/material"
-import { useNavigate } from "react-router-dom"
-const LoginPage = () => {
+import { Button, TextField } from '@mui/material'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Base from '../Base/Base'
+
+
+function LoginPage() {
     const navigate = useNavigate()
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-
-    const handleLogin = async () => {
-        const userDetails = {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+   
+    const handleLogin = async()=>{
+        const userInfo = {
             email,
-            password
+            password,
         }
-        const response = await fetch(`https://auth-delta-murex.vercel.app/users/login`, {
-            method: "POST",
-            body: JSON.stringify(userDetails),
-            headers: {
-                "Content-type": "application/json"
-
-            }
-        });
-
-        const data = await response.json()
-        if (data.token) {
-            setError("")
-            localStorage.setItem("token", data.token)
-            navigate("/")
-        } else {
-            setError(data.message)
-        }
+const res = await fetch(`https://auth-delta-murex.vercel.app/users/login`, {
+    method :"POST",
+    body : JSON.stringify(userInfo),
+    headers:{
+        "Content-Type":"application/json"
     }
+});
 
-    return (
-        <Base>
-            <TextField label="email" variant="outlined" fullWidth sx={{ m: 1 }}
-                placeholder="Enter the email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-            />
-            <TextField label="password" variant="outlined" fullWidth sx={{ m: 1 }}
-                placeholder="Enter the password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button
-                type="submit"
-                variant="contained"
-                onClick={handleLogin}
-            >Login</Button>
-            {error ?
-                <Typography color={"danger"}>
-                    {error}
-                </Typography> : ""}
-        </Base>
+   const data = await res.json();
+  localStorage.setItem("token", data.data.token)
+   navigate("/")
+    }
+  return (
+ <Base
+ title={"Login Page"}
+ description={"Please login to continue"}
+ >
+        <TextField  label="Name" variant="outlined" fullWidth sx={{ m: 1 }} 
+         placeholder='Enter Email'
+         type="email"
+         value= {email}
+         onChange={(e)=>setEmail(e.target.value)}
+         />
+        <TextField  label="Password" variant="outlined" fullWidth sx={{ m: 1 }} 
+         placeholder='Enter Password'
+         type="Password"
+         value ={password}
+         onChange={(e)=>setPassword(e.target.value)}
+         />
+        <Button
+        type="submit"
+        variant="contained"
+        onClick={handleLogin}
+        >Login</Button>
+   </Base>
 
-    )
+  )
 }
 
 export default LoginPage

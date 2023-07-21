@@ -1,10 +1,18 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Base from "../Base/Base"
 import FileList from "../FileList/FileList"
 import FileUpload from "../FileUpload/FileUpload"
 import DropFileInput from "./drop-file-input/DropFileInput"
 
+
 const Dashboard = () => {
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+       navigate("/login", {replace:true})
+    }
+   })
   const [files, setFiles] = useState([])
 
   const removeFile = (filename) => {

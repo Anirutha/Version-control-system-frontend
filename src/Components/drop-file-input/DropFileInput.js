@@ -5,6 +5,7 @@ import './drop-file-input.css';
 
 import { ImageConfig } from '../../config/ImageConfig'; 
 import uploadImg from '../../assets/cloud-upload-regular-240.png';
+import Datetime from '../../Datetime';
 
 const DropFileInput = props => {
 
@@ -45,6 +46,7 @@ const DropFileInput = props => {
             >
                 <div className="drop-file-input__label">
                     <img src={uploadImg} alt="" />
+                    <Datetime/>
                     <p>Drag & Drop your files here</p>
                 </div>
                 <input type="file" value="" onChange={onFileDrop}/>

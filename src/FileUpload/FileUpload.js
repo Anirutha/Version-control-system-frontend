@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import './FileUpload.scss'
 import axios from 'axios'
+import Datetime from '../Datetime'
 
 const FileUpload = ({ files, setFiles, removeFile }) => {
     const uploadHandler = (event) => {
         const file = event.target.files[0];
-        if(!file) return;
+        if (!file) return;
         file.isUploading = true;
         setFiles([...files, file])
 
@@ -23,6 +24,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
                 file.isUploading = false;
                 setFiles([...files, file])
             })
+
             .catch((err) => {
                 // inform the user
                 console.error(err)
@@ -33,7 +35,6 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
     return (
         <>
             <div className="file-card">
-
                 <div className="file-inputs">
                     <input type="file" onChange={uploadHandler} />
                     <button>
@@ -43,10 +44,9 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
                         Upload
                     </button>
                 </div>
-
+                <Datetime />
                 <p className="main">Uploaded files</p>
                 <p className="info">JS,CSS,HTML</p>
-
             </div>
         </>
     )
